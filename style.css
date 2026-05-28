@@ -1,0 +1,448 @@
+/* ==========================================================================
+   RESET & VARIABEL UTAMA
+   ========================================================================== */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+:root {
+    --bg-color: #0f172a;        /* Slate gelap premium */
+    --card-bg: #1e293b;         /* Slate agak terang untuk card */
+    --accent-color: #38bdf8;    /* Cyan modern */
+    --accent-hover: #0ea5e9;    /* Cyan lebih tua saat hover */
+    --text-main: #f8fafc;       /* Putih bersih */
+    --text-muted: #94a3b8;      /* Abu-abu teks sekunder */
+    --border-color: #334155;    /* Garis pembatas elegan */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   NAVIGASI (NAVBAR)
+   ========================================================================== */
+.navbar {
+    background-color: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px); /* Efek kaca transparan modern */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo i {
+    color: var(--accent-color);
+    margin-right: 5px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+/* Kotak Pencarian */
+.search-box {
+    position: relative;
+    width: 350px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px 10px 45px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 14px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* ==========================================================================
+   HERO SECTION (BANNER)
+   ========================================================================== */
+   .hero {
+    max-width: 1200px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
+}
+
+.hero-banner-container {
+    width: 100%;
+    border-radius: 16px; /* Sudut melengkung elegan */
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+}
+
+.main-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsif untuk layar HP agar banner tidak terlalu gepeng */
+@media (max-width: 768px) {
+    .main-banner {
+        min-height: 150px; /* Batas tinggi minimal di HP */
+    }
+}
+
+/* ==========================================================================
+   MAIN CONTENT & GRID GAME
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background-color: var(--accent-color);
+    border-radius: 3px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+/* Game Card */
+.game-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 15px;
+}
+
+.game-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-info p {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   MODAL POP-UP (INTERAKTIF)
+   ========================================================================== */
+.modal {
+    display: none; /* Hidden secara default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-header-game h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.modal-header-game p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Form Input */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--accent-color);
+}
+
+.section-sub-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Grid Pilihan Nominal & Item */
+.nominal-grid, .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.nominal-card, .payment-card {
+    position: relative;
+}
+
+.nominal-card input, .payment-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.nominal-card label, .payment-card label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    height: 100%;
+}
+
+.nominal-card label .nom-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nominal-card label .nom-price {
+    font-size: 12px;
+    color: var(--accent-color);
+    margin-top: 5px;
+}
+
+.payment-card label {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.payment-card label i {
+    font-size: 16px;
+    color: var(--accent-color);
+}
+
+/* Efek saat Radio Button dipilih (Checked) */
+.nominal-card input:checked + label, 
+.payment-card input:checked + label {
+    border-color: var(--accent-color);
+    background-color: rgba(56, 189, 248, 0.05);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+}
+
+/* Tombol Checkout */
+.btn-checkout {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-checkout:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE FRIENDLY)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+
+    .hero-content {
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .game-card img {
+        height: 180px;
+    }
+
+    .nominal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .payment-grid {
+        grid-template-columns: 1fr;
+    }
+}
